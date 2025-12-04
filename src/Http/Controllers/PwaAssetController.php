@@ -15,9 +15,7 @@ class PwaAssetController extends Controller
 	{
 		$manifestContents = [];
 
-		return response()->json($manifestContents)->headers([
-            'Content-Type' => 'application/json', 
-        ]);
+		return response()->json($manifestContents);
 	}
 
 	/**
