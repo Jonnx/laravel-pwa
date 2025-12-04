@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
 use Jonnx\LaravelPwa\Actions\CompileManifest;
+use Jonnx\LaravelPwa\Actions\CompileServiceWorker;
 
 class PwaAssetController extends Controller
 {
@@ -25,7 +26,7 @@ class PwaAssetController extends Controller
 	public function serviceWorker(Request $request)
 	{
         // @todo implement this
-		$serviceWorkerContents = '// coming soon...';
+		$serviceWorkerContents = CompileServiceWorker::compile();
 
         return Response::make($serviceWorkerContents, 200, [
             'Content-Type' => 'application/javascript', 
