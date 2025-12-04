@@ -5,6 +5,7 @@ namespace Jonnx\LaravelPwa\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
+use Jonnx\LaravelPwa\Actions\CompileManifest;
 
 class PwaAssetController extends Controller
 {
@@ -13,7 +14,7 @@ class PwaAssetController extends Controller
 	 */
 	public function manifest(Request $request)
 	{
-		$manifestContents = [];
+		$manifestContents = CompileManifest::compile();
 
 		return response()->json($manifestContents);
 	}

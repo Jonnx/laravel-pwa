@@ -2,4 +2,44 @@
 
 return [
 
+    'features' => [
+        // ADD OFFLINE MODE
+        // shows offline page when user is offline
+        'offline_support' => true,
+
+        // ADD NOTIFICATIONS SUPPORT
+        // enables push notifications and background push
+        'notifications' => true,
+        
+        // SHOULD APP BE INSTALLABLE
+        // allows users to install the PWA on their device
+        'install' => true,
+    ],
+
+    'manifest' => [
+        'name' => env('PWA_NAME', env('APP_NAME', 'Laravel')),
+        'short_name' => env('PWA_SHORT_NAME', env('APP_NAME', 'Laravel')),
+
+        // DISPLAY MODE
+        // options: fullscreen, standalone, minimal-ui, browser
+        'display' => 'standalone',
+    
+        // used on the splash screen when the application is launched
+        'background_color' => '#ffffff',
+        
+        // primary color of the application
+        'theme_color' => '#000000',
+        
+        // SHORTCUTS
+        // quick links available from the app icon
+        // may not be supported on all platforms
+        'shortcuts' => [
+            // [
+            //     'name' => 'Open Inbox',
+            //     'url' => '/inbox',
+            //     'icons' => [],
+            // ],
+        ],
+    ]
+
 ];
