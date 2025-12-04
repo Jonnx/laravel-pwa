@@ -31,4 +31,9 @@ class PwaAssetController extends Controller
             'Content-Type' => 'application/javascript', 
         ]);
 	}
+
+    public function offline(Request $request)
+    {
+        return view('pwa::offline');
+    }
 }
