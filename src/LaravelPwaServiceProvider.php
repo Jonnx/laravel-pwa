@@ -21,11 +21,11 @@ class LaravelPwaServiceProvider extends ServiceProvider
 
         // Register PWA asset routes
         \Illuminate\Support\Facades\Route::get('/pwa/manifest.json', [
-            \LaravelPwa\Http\Controllers\PwaAssetController::class, 'manifest'
+            \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'manifest'
         ])->name('pwa.manifest');
 
         \Illuminate\Support\Facades\Route::get('/pwa/service-worker.js', [
-            \LaravelPwa\Http\Controllers\PwaAssetController::class, 'serviceWorker'
+            \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'serviceWorker'
         ])->name('pwa.service-worker');
     }
 
