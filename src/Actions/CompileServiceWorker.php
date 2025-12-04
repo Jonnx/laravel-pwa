@@ -20,5 +20,6 @@ class CompileServiceWorker
             $workerContents .= "\n\n";
         }
 
+        return $workerContents;
     }
 }
