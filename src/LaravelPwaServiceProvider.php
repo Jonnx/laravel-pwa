@@ -15,10 +15,6 @@ class LaravelPwaServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'pwa');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views'),
-        ], 'laravel-pwa-views');
-
-        $this->publishes([
             __DIR__.'/../config/pwa.php' => config_path('pwa.php'),
         ], 'laravel-pwa-config');
 
