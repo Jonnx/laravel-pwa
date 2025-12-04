@@ -3,6 +3,7 @@
 namespace Jonnx\LaravelPwa;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
 class LaravelPwaServiceProvider extends ServiceProvider
 {
@@ -11,6 +12,15 @@ class LaravelPwaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Register @laravelPwaScripts Blade directive
+        Blade::directive('laravelPwaScripts', function () {
+            return "<?php echo view('pwa::scripts')->render(); ?>";
+        });
+        
+        // Register @laravelPwaHead Blade directive
+        Blade::directive('laravelPwaHead', function () {
+            return "<?php echo view('pwa::head')->render(); ?>";
+        });
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'pwa');
 
