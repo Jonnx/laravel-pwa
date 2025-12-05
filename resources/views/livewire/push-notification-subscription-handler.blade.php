@@ -17,7 +17,11 @@
                 this.log('Push Notification Subscription Handler Initialized');
                 this.checkSubscription(false);
             },
-           
+            updateSubscriptionOnServer(subscription) {
+                // Send subscription to server via Livewire
+                this.log('Push Notification Subscription: Sending Subscription to Server', { subscription });
+                @this.call('upsertSubscription', subscription);
+            },
             checkSubscription(userInitiated = false) {
                 // Logic to ask for push notification permission
                 this.log('Push Notification Subscription: Check Permission Started', { userInitiated });
@@ -38,11 +42,23 @@
                     });
                 });
             },
-            updateSubscriptionOnServer(subscription) {
-                // Send subscription to server via Livewire
-                this.log('Push Notification Subscription: Sending Subscription to Server', { subscription });
-                @this.call('upsertSubscription', subscription);
-            },
+            requestPermissionAndSubscribe(registration) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        registration.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: '{{ config('pwa.vapid.public_key') }}'
+                        }).then(subscription => {
+                            this.log('Push Notification Subscription: Subscribed Successfully', { subscription });
+                            this.updateSubscriptionOnServer(subscription);
+                        }).catch(error => {
+                            this.log('Push Notification Subscription: Subscription Failed', { error });
+                        });
+                    } else {
+                        this.log('Push Notification Subscription: Permission Denied');
+                    }
+                });
+            }
         }));
     });
 </script>
