@@ -41,7 +41,7 @@
             updateSubscriptionOnServer(subscription) {
                 // Send subscription to server via Livewire
                 this.log('Push Notification Subscription: Sending Subscription to Server', { subscription });
-                @this.call('storeSubscription', subscription);
+                @this.call('upsertSubscription', subscription);
             },
         }));
     });

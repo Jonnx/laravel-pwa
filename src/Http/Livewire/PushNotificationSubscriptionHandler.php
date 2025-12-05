@@ -18,7 +18,7 @@ class PushNotificationSubscriptionHandler extends Component
         return view('pwa::livewire.push-notification-subscription-handler');
     }
 
-    public function updateSubscription($subscription)
+    public function upsertSubscription($subscription)
     {
         $user = request()->user();
         if(!$user) {
