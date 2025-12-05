@@ -1,8 +1,5 @@
 {{-- resources/views/livewire/push-notification-subscription-handler.blade.php --}}
-<div x-data="pushNotificationSubscriptionHandler">
-    <!-- Livewire logic for push notification subscription goes here -->
-    <p>Push Notification Subscription Handler Component Loaded.</p>
-</div>
+<span x-data="pushNotificationSubscriptionHandler"></span>
 
 <script>
     document.addEventListener('alpine:init', () => {
