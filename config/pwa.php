@@ -15,7 +15,7 @@ return [
         // allows users to install the PWA on their device
         'install' => true,
     ],
-    
+
     'notifications' => [
         'public_key' => env('VAPID_PUBLIC_KEY'),
     ],
@@ -23,6 +23,9 @@ return [
     'manifest' => [
         'name' => env('PWA_NAME', env('APP_NAME', 'Laravel')),
         'short_name' => env('PWA_SHORT_NAME', env('APP_NAME', 'Laravel')),
+
+        // Application start URL
+        'start_url' => '/dashboard',
 
         // DISPLAY MODE
         // options: fullscreen, standalone, minimal-ui, browser
@@ -33,6 +36,20 @@ return [
 
         // primary color of the application
         'theme_color' => '#000000',
+
+        // ICONS
+        'icons' => [
+            [
+                    'src' => 'https://placehold.co/512x512?text=PWA',
+                    'sizes' => '192x192',
+                'type' => 'image/png',
+            ],
+            [
+                'src' => 'https://placehold.co/512x512?text=PWA',
+                'sizes' => '512x512',
+                'type' => 'image/png',
+            ],
+        ],
         
         // SHORTCUTS
         // quick links available from the app icon
@@ -44,6 +61,9 @@ return [
             //     'icons' => [],
             // ],
         ],
+
+        // Whether to prefer related applications over the web app
+        'prefer_related_applications' => false,
     ]
 
 ];
