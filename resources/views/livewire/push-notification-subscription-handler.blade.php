@@ -9,15 +9,15 @@
         return {
             init() {
                 this.log('Push Notification Subscription Handler Initialized');
-                // Add your push notification subscription logic here
+                this.checkSubscription(false)
             },
             log(message) {
                 if({{ $debug ? 'true' : 'false' })
                     console.log(message);
             } 
-            askPermission(isUserInitiated = false) {
+            checkSubscription(userInitiated = false) {
                 // Logic to ask for push notification permission
-                this.log('Push Notification Subscription Permission Requested', {isUserInitiated});
+                this.log('Push Notification Subscription Permission Requested', {userInitiated});
             }
         }
     }
