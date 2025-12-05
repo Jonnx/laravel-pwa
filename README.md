@@ -38,11 +38,7 @@ php artisan migrate
 @laravelPwaScripts
 ```
 
-## Push Notification Permissions & Setup
-
-
-
-## PWA Install Banners
+### PWA Install Banners
 
 This package provides two install banners to help users install your PWA:
 
@@ -57,9 +53,9 @@ Include these components in your layout to provide a seamless install experience
 <x-pwa.install-banner-manual />
 ```
 
-## Push Notification Setup
+### Push Notification Setup
 
-### Vapid Keys
+#### Vapid Keys
 To enable push notifications, you need to generate VAPID API keys:
 
 ```bash
@@ -68,13 +64,23 @@ php artisan webpush:vapid
 
 This will generate the required keys and update your `.env` and `config/pwa.php` files. Make sure to configure your environment and PWA settings accordingly.
 
-### Web Push Subscription Handler
+#### User Model Push Subscription Trait
+
+```
+use NotificationChannels\WebPush\HasPushSubscriptions;
+...
+class User extends Authenticatable
+{
+    use HasPushSubscriptions
+```
+
+#### Web Push Subscription Handler
 Use the push notification subscription handler Livewire component. This captures the subscription data and automatically saves it to the user on the back-end so that you can use the subscription to send notifications anytime. 
 ```blade
 @livewire('push-notification-subscription-handler')
 ```
 
-### User Permission Banner
+#### User Permission Banner
 Push notifications require active user opt-in on all browsers. Include this components in your layout to provide a seamless opt-in experience.
 
 ```blade
