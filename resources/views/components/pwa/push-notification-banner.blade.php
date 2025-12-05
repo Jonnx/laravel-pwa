@@ -30,7 +30,7 @@
             },
             enableNotifications() {
                 this.show = false;
-                window.dispatchEvent(new CustomEvent('pwa:enable-push-notifications'));
+                $dispatch('pwa-enable-push-notifications');
             }
         }));
     });
