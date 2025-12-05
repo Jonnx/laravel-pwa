@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace Jonnx\LaravelPwa;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
