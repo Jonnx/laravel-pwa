@@ -25,7 +25,6 @@ class PwaAssetController extends Controller
 	 */
 	public function serviceWorker(Request $request)
 	{
-        // @todo implement this
 		$serviceWorkerContents = CompileServiceWorker::compile();
 
         return Response::make($serviceWorkerContents, 200, [
