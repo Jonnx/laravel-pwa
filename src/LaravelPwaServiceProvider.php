@@ -16,7 +16,8 @@ class LaravelPwaServiceProvider extends ServiceProvider
         $this->loadViewComponentsAs('pwa', [
             \Jonnx\LaravelPwa\View\Components\PushNotificationBanner::class,
         ]);
-        // Register Livewire component for package
+
+        // Register Livewire components for package
         if (class_exists('Livewire\\Livewire')) {
             \Livewire\Livewire::component('push-notification-subscription-handler', \Jonnx\LaravelPwa\Http\Livewire\PushNotificationSubscriptionHandler::class);
         }
