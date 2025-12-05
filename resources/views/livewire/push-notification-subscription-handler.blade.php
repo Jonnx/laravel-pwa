@@ -19,7 +19,11 @@
             updateSubscriptionOnServer(subscription) {
                 // Send subscription to server via Livewire
                 this.log('Push Notification Subscription: Sending Subscription to Server', { subscription });
-                @this.call('upsertSubscription', subscription);
+                @this.call('upsertSubscription', subscription).then(() => {
+                    this.log('Push Notification Subscription: Subscription Updated on Server');
+                }).catch(error => {
+                    this.log('Push Notification Subscription: Failed to Update Subscription on Server', { error });
+                });
             },
             checkSubscription(userInitiated = false) {
                 // Logic to ask for push notification permission
