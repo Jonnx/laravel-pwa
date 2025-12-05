@@ -2,6 +2,9 @@
 
 Turn your Laravel application into a Progressive Web App (PWA) with push notifications and more.
 
+## Dependencies
+
+
 ## Installation
 
 1. **Install the package via Composer:**
@@ -91,6 +94,20 @@ Push notifications require active user opt-in on all browsers. Include this comp
 ## Customizing Banner Components
 The setup steps publish the banner components to a folder in your project so you can easily tweak appearance, position and more. 
 The files are located in the `resources/views/pwa` folder.
+
+## Major Library Dependencies
+
+| Library                              | Purpose                                                                                   |
+|--------------------------------------|-------------------------------------------------------------------------------------------|
+| [laravel/webpush](https://github.com/web-push-libs/laravel-web-push) | Handles browser push notifications, VAPID key management, and subscription storage.        |
+| [livewire/livewire](https://laravel-livewire.com/) | Enables reactive components for subscription handling and real-time UI updates.            |
+| [alpinejs](https://alpinejs.dev/)    | Provides lightweight frontend interactivity for banners and install prompts.               |
+| [notification-channels/webpush](https://github.com/laravel-notification-channels/webpush) | Adds push notification support to Laravel's notification system.                           |
+
+These libraries are required to:
+- Manage push notification subscriptions and permissions.
+- Provide real-time, interactive UI components for banners and prompts.
+- Integrate with browser APIs for PWA installation and notifications.
 
 ---
 
