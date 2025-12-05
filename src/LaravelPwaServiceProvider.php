@@ -38,7 +38,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/views/components' => resource_path('views/vendor/pwa'),
-        ], 'laravel-pwa-views');
+        ], 'laravel-pwa-components');
 
         // Register PWA asset routes
         \Illuminate\Support\Facades\Route::get('/manifest.json', [
