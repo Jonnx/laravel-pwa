@@ -10,11 +10,14 @@ Turn your Laravel application into a Progressive Web App (PWA) with push notific
 composer require jonnx/laravel-pwa
 ```
 
-2. **Publish the config and views (optional):**
+2. **Publish the config and views:**
 
 ```bash
 php artisan vendor:publish --provider="Jonnx\LaravelPwa\LaravelPwaServiceProvider"
 ```
+
+> **Important:**
+> To ensure Tailwind CSS and Vite pick up all classes used in the package's Blade files, you must publish the views. This copies them to your app's `resources/views/vendor/laravel-pwa/` directory, which is always scanned by Tailwind and Vite.
 
 3. **Publish the CSS (optional, for custom styles):**
 
@@ -22,7 +25,7 @@ php artisan vendor:publish --provider="Jonnx\LaravelPwa\LaravelPwaServiceProvide
 php artisan vendor:publish --tag=laravel-pwa-assets
 ```
 
-4. **Add the package views to your Tailwind config:**
+4. **Add the published views to your Tailwind config:**
 
 In your `tailwind.config.js`:
 
@@ -30,7 +33,6 @@ In your `tailwind.config.js`:
 module.exports = {
   content: [
     './resources/views/**/*.blade.php',
-    './vendor/jonnx/laravel-pwa/resources/views/**/*.blade.php', // Add this line
   ],
   // ...other config
 }
@@ -46,6 +48,14 @@ Or add the published CSS directly in your layout:
 
 ```blade
 <link rel="stylesheet" href="{{ asset('vendor/laravel-pwa/pwa.css') }}">
+```
+
+6. **Restart your Vite dev server:**
+
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
 ## Usage
