@@ -28,6 +28,13 @@ class LaravelPwaServiceProvider extends ServiceProvider
 
     public function registerComponents()
     {
+        // RESOURCE HINTS
+        $this->loadViewsFrom([
+            resource_path('views/vendor/pwa'),
+            __DIR__.'/../resources/views/pwa'
+        ], 'pwa');
+
+        // LIVEWIRE COMPONENTS
         if (class_exists('Livewire\\Livewire')) {
             \Livewire\Livewire::component('push-notification-subscription-handler', \Jonnx\LaravelPwa\Http\Livewire\PushNotificationSubscriptionHandler::class);
         }
