@@ -15,6 +15,10 @@ return [
         // allows users to install the PWA on their device
         'install' => true,
     ],
+    
+    'notifications' => [
+        'public_key' => env('VAPID_PUBLIC_KEY'),
+    ],
 
     'manifest' => [
         'name' => env('PWA_NAME', env('APP_NAME', 'Laravel')),
@@ -26,7 +30,7 @@ return [
     
         // used on the splash screen when the application is launched
         'background_color' => '#ffffff',
-        
+
         // primary color of the application
         'theme_color' => '#000000',
         

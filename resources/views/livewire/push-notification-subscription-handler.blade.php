@@ -50,12 +50,13 @@
                     if (permission === 'granted') {
                         registration.pushManager.subscribe({
                             userVisibleOnly: true,
-                            applicationServerKey: '{{ config('pwa.vapid.public_key') }}'
+                            applicationServerKey: '{{ config('pwa.notifications.public_key') }}'
                         }).then(subscription => {
                             this.log('Push Notification Subscription: Subscribed Successfully', { subscription });
                             this.updateSubscriptionOnServer(subscription);
                         }).catch(error => {
-                            this.log('Push Notification Subscription: Subscription Failed', { error });
+                            this.log('Push Notification Subscription: Subscription Failed');
+                            this.log(error)
                         });
                     } else {
                         this.log('Push Notification Subscription: Permission Denied');
