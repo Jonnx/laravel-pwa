@@ -31,7 +31,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
         // RESOURCE HINTS
         $this->loadViewsFrom([
             resource_path('views/vendor/pwa'),
-            __DIR__.'/../resources/views/pwa'
+            __DIR__.'/../resources/views'
         ], 'pwa');
 
         // LIVEWIRE COMPONENTS
