@@ -13,6 +13,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
     public function boot()
     {
         // Register Blade components namespace for package
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'pwa');
         $this->loadViewComponentsAs('pwa', [
             \Jonnx\LaravelPwa\View\Components\PushNotificationBanner::class,
         ]);
@@ -31,8 +32,6 @@ class LaravelPwaServiceProvider extends ServiceProvider
         Blade::directive('laravelPwaHead', function () {
             return "<?php echo view('pwa::head')->render(); ?>";
         });
-
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'pwa');
 
         $this->publishes([
             __DIR__.'/../config/pwa.php' => config_path('pwa.php'),
