@@ -20,7 +20,23 @@
            
             checkSubscription(userInitiated = false) {
                 // Logic to ask for push notification permission
-                this.log('Push Notification Subscription Permission Requested', { userInitiated });
+                this.log('Push Notification Subscription: Check Permission Started', { userInitiated });
+
+                const serviceWorker = navigator.serviceWorker;
+                serviceWorker.ready.then(registration => {
+                    registration.pushManager.getSubscription().then(subscription => {
+                        if (subscription) {
+                            this.log('Push Notification Subscription: Already Subscribed', { subscription });
+                            // Handle existing subscription
+                        } else {
+                            this.log('Push Notification Subscription: Not Subscribed');
+                            if (userInitiated) {
+                                this.log('Push Notification Subscription: Requesting Permission and Subscribing User');
+                                this.requestPermissionAndSubscribe(registration);
+                            }
+                        }
+                    });
+                });
             }
         }));
     });
