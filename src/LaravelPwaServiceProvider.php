@@ -37,7 +37,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
         ], 'laravel-pwa-config');
 
         $this->publishes([
-            __DIR__.'/../resources/views/components' => resource_path('views/vendor/pwa'),
+            __DIR__.'/../resources/views/components' => resource_path('views/components/pwa'),
         ], 'laravel-pwa-components');
 
         // Register PWA asset routes
