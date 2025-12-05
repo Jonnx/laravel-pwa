@@ -1,5 +1,5 @@
-{{-- resources/views/components/push-notification-banner.blade.php --}}
-<div x-cloak x-data="pushNotificationBanner" x-show="show" class="bg-blue-600 text-white px-4 py-3 flex items-center justify-between z-50 shadow-lg">
+@props(['class' => ''])
+<div x-cloak x-data="pushNotificationBanner" x-show="show" {{ $attributes->merge(['class' => 'bg-blue-600 text-white px-4 py-3 flex items-center justify-between z-50 shadow-lg']) }}   >
     <span>
         <strong>Enable notifications</strong> to stay updated!
     </span>

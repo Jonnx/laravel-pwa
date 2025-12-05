@@ -1,5 +1,5 @@
-{{-- resources/views/components/pwa/install-banner.blade.php --}}
-<div x-cloak x-data="pwaInstallBanner" x-show="show" class="bg-green-600 text-white px-4 py-3 flex items-center justify-between z-50 shadow-lg">
+@props(['class' => ''])
+<div x-cloak x-data="pwaInstallBanner" x-show="show" {{ $attributes->merge(['class' => 'bg-green-600 text-white px-4 py-3 flex items-center justify-between z-50 shadow-lg']) }}>
     <span>
         <strong>Install this app</strong> for a better experience!
     </span>
