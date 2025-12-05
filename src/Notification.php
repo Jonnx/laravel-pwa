@@ -42,7 +42,9 @@ class Notification extends IlluminateNotification
             $notification->body($this->body);
         }
         if($this->openUrl) {
-            $notification->data(['url_open' => $this->openUrl]);
+            $notification
+                ->navigate($this->openUrl)
+                ->data(['url_open' => $this->openUrl]);
         }
 
         return $notification;
