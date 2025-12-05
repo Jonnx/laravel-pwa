@@ -37,6 +37,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
         // LIVEWIRE COMPONENTS
         if (class_exists('Livewire\\Livewire')) {
             \Livewire\Livewire::component('push-notification-subscription-handler', \Jonnx\LaravelPwa\Http\Livewire\PushNotificationSubscriptionHandler::class);
+            \Livewire\Livewire::component('push-notification-test-button', \Jonnx\LaravelPwa\Http\Livewire\PushNotificationTestButton::class);
         }
     }
 
