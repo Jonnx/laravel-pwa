@@ -1,6 +1,5 @@
 {{-- resources/views/livewire/push-notification-subscription-handler.blade.php --}}
 <span x-data="pushNotificationSubscriptionHandler"></span>
-
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('pushNotificationSubscriptionHandler', () => ({
