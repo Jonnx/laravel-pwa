@@ -69,3 +69,22 @@
         }));
     });
 </script>
+<script>
+    // Re-attach event listeners after Livewire navigation
+    document.addEventListener('livewire:navigated', () => {
+        // Re-attach beforeinstallprompt listener if not already attached
+        if (!window._pwaInstallListenerAttached) {
+            window.deferredPwaInstallPrompt = null;
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                window.deferredPwaInstallPrompt = e;
+                window.dispatchEvent(new CustomEvent('pwa:show-install-banner'));
+            });
+            window._pwaInstallListenerAttached = true;
+        }
+        // Re-initialize Alpine if needed
+        if (window.Alpine && typeof window.Alpine.initTree === 'function') {
+            window.Alpine.initTree(document.body);
+        }
+    });
+</script>
