@@ -69,6 +69,8 @@
         }));
     });
 </script>
+
+@pushOnce('scripts')
 <script>
     // Re-attach event listeners after Livewire navigation
     document.addEventListener('livewire:navigated', () => {
@@ -88,3 +90,4 @@
         }
     });
 </script>
+@endpushOnce
