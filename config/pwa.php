@@ -32,10 +32,10 @@ return [
         'display' => 'standalone',
     
         // used on the splash screen when the application is launched
-        'background_color' => '#ffffff',
+        'background_color' => '#262626',
 
         // primary color of the application
-        'theme_color' => '#000000',
+        'theme_color' => '#262626',
 
         // ICONS
         'icons' => [
