@@ -1,5 +1,5 @@
 {{-- resources/views/livewire/push-notification-subscription-handler.blade.php --}}
-<div x-data="PushNotificationSubscriptionHandler()" x-init="init()">
+<div x-data="PushNotificationSubscriptionHandler()">
     <!-- Livewire logic for push notification subscription goes here -->
     <p>Push Notification Subscription Handler Component Loaded.</p>
 </div>
