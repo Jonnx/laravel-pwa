@@ -3,10 +3,10 @@
     <span>
         <div class="mb-1"><strong>Install this app manually</strong> for a better experience!</div>
         <template x-if="isIos()">
-            <span class="ml-2">Tap <span class="font-bold">Share</span> <svg class="inline w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12v.01M12 4v16m8-8v.01M16 8l-4-4-4 4"/></svg> then <span class="font-bold">Add to Home Screen</span>.</span>
+            <span>Tap <span class="font-bold">Share</span> <svg class="inline w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12v.01M12 4v16m8-8v.01M16 8l-4-4-4 4"/></svg> then <span class="font-bold">Add to Home Screen</span>.</span>
         </template>
         <template x-if="isMacSafari()">
-            <span class="ml-2">In Safari, go to <span class="font-bold">File &gt; Add to Dock</span>.</span>
+            <span>In Safari, go to <span class="font-bold">File &gt; Add to Dock</span>.</span>
         </template>
     </span>
 </div>
