@@ -10,52 +10,12 @@ Turn your Laravel application into a Progressive Web App (PWA) with push notific
 composer require jonnx/laravel-pwa
 ```
 
-2. **Publish the config and views:**
+2. **Publish the config and components:**
 
 ```bash
-php artisan vendor:publish --provider="Jonnx\LaravelPwa\LaravelPwaServiceProvider"
-```
-
-> **Important:**
-> To ensure Tailwind CSS and Vite pick up all classes used in the package's Blade files, you must publish the views. This copies them to your app's `resources/views/vendor/laravel-pwa/` directory, which is always scanned by Tailwind and Vite.
-
-3. **Publish the CSS (optional, for custom styles):**
-
-```bash
-php artisan vendor:publish --tag=laravel-pwa-assets
-```
-
-4. **Add the published views to your Tailwind config:**
-
-In your `tailwind.config.js`:
-
-```js
-module.exports = {
-  content: [
-    './resources/views/**/*.blade.php',
-  ],
-  // ...other config
-}
-```
-
-5. **Import the published CSS in your main CSS (if using):**
-
-```css
-@import 'vendor/laravel-pwa/pwa.css';
-```
-
-Or add the published CSS directly in your layout:
-
-```blade
-<link rel="stylesheet" href="{{ asset('vendor/laravel-pwa/pwa.css') }}">
-```
-
-6. **Restart your Vite dev server:**
-
-```bash
-npm run dev
-# or
-yarn dev
+php artisan vendor:publish --force --tag=laravel-pwa-config
+php artisan vendor:publish --force --tag=laravel-pwa-components
+php artisan webpush:vapid
 ```
 
 ## Usage
@@ -79,16 +39,6 @@ yarn dev
 @livewire('push-notification-subscription-handler')
 ```
 
-## Push Notification Setup
-
-To enable push notifications, you need to generate VAPID API keys:
-
-```bash
-php artisan webpush:vapid
-```
-
-This will generate the required keys and update your `.env` file. 
-
 ## PWA Install Banners
 
 This package provides two install banners to help users install your PWA:
@@ -104,10 +54,24 @@ Include these components in your layout to provide a seamless install experience
 <x-pwa.install-banner-manual />
 ```
 
+## Push Notification Setup
+
+To enable push notifications, you need to generate VAPID API keys:
+
+```bash
+php artisan webpush:vapid
+```
+
+This will generate the required keys and update your `.env` and `config/pwa.php` files. Make sure to configure your environment and PWA settings accordingly.
+
 ## Notes
 - Make sure your app is served over HTTPS for push notifications to work.
 - If you use custom Blade components, register them in your app or extend the package as needed.
 - For advanced configuration, check the published `config/pwa.php` file.
+
+---
+
+For more details, see the package documentation or open an issue if you need help.
 
 ## Contributing
 
