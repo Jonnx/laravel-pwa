@@ -5,7 +5,7 @@
     </span>
     <button
         @click="enableNotifications"
-        class="ml-4 bg-white text-blue-600 font-semibold px-4 py-2 rounded shadow hover:bg-blue-100 transition"
+        class="ml-4 bg-white text-blue-600 font-semibold px-4 py-2 rounded shadow hover:bg-blue-100 transition cursor-pointer"
     >
         Enable Notifications
     </button>
