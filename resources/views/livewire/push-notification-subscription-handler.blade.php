@@ -11,6 +11,10 @@
             },
             init() {
                 this.checkSubscription(false);
+                // Listen for the global event to trigger permission ask
+                window.addEventListener('pwa:enable-push-notifications', () => {
+                    this.checkSubscription(true);
+                });
             },
             updateSubscriptionOnServer(subscription) {
                 // Send subscription to server via Livewire
