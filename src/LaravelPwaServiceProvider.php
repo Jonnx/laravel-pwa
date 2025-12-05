@@ -12,26 +12,6 @@ class LaravelPwaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Register Blade components namespace for package
-        $this->loadViewComponentsAs('pwa', [
-            \Jonnx\LaravelPwa\View\Components\PushNotificationBanner::class,
-        ]);
-
-        // Register Livewire components for package
-        if (class_exists('Livewire\\Livewire')) {
-            \Livewire\Livewire::component('push-notification-subscription-handler', \Jonnx\LaravelPwa\Http\Livewire\PushNotificationSubscriptionHandler::class);
-        }
-        
-        // Register @laravelPwaScripts Blade directive
-        Blade::directive('laravelPwaScripts', function () {
-            return "<?php echo view('pwa::scripts')->render(); ?>";
-        });
-
-        // Register @laravelPwaHead Blade directive
-        Blade::directive('laravelPwaHead', function () {
-            return "<?php echo view('pwa::head')->render(); ?>";
-        });
-
         $this->publishes([
             __DIR__.'/../config/pwa.php' => config_path('pwa.php'),
         ], 'laravel-pwa-config');
@@ -40,8 +20,39 @@ class LaravelPwaServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views/components/pwa' => resource_path('views/components/pwa'),
         ], 'laravel-pwa-components');
 
-        // Register PWA asset routes
-        \Illuminate\Support\Facades\Route::get('/manifest.json', [
+        $this->registerBladeDirectives();
+        $this->registerComponents();
+        $this->registerRoutes();
+       
+    }
+
+    public function registerComponents()
+    {
+        if (class_exists('Livewire\\Livewire')) {
+            \Livewire\Livewire::component('push-notification-subscription-handler', \Jonnx\LaravelPwa\Http\Livewire\PushNotificationSubscriptionHandler::class);
+        }
+    }
+
+    public function registerBladeDirectives()
+    {
+        // Register @laravelPwaScripts Blade directive
+        // Usage: @laravelPwaScripts
+        // This will include all the necessary PWA scripts
+        Blade::directive('laravelPwaScripts', function () {
+            return "<?php echo view('pwa::scripts')->render(); ?>";
+        });
+
+        // Register @laravelPwaHead Blade directive
+        // Usage: @laravelPwaHead
+        // This will include all the necessary PWA head elements
+        Blade::directive('laravelPwaHead', function () {
+            return "<?php echo view('pwa::head')->render(); ?>";
+        });
+    }
+
+    protected function registerRoutes()
+    {
+         \Illuminate\Support\Facades\Route::get('/manifest.json', [
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'manifest'
         ])->name('pwa.manifest');
 
