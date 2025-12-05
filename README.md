@@ -105,6 +105,21 @@ Here is how it works:
 @livewire('push-notification-test-button')
 ```
 
+#### Creating Your Own Push Notifications
+
+##### Simple
+This package provides a helper class you can use to create your own notifications quickly. the service worker is already setup to open the url on the user's device when they click the notification.
+
+```
+$user->notify(new Notification(
+    title: 'Test Push Notification',
+    body: 'This is a test push notification from Laravel PWA package. Clicking it will take you to the settings page.',
+    openUrl: url('/settings')
+));
+```
+
+##### Advanced
+The class we provide is just a simplified wrapper around `DeclarativeWebPushMessage`. To learn more about this, checkout the documentation here: https://github.com/laravel-notification-channels/webpush?tab=readme-ov-file#declarative-web-push-messages
 
 
 ## Customizing Banner Components
