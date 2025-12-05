@@ -3,10 +3,7 @@
 namespace Jonnx\LaravelPwa;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification as IlluminateNotification;
-use Illuminate\Support\Facades\Vite;
 use NotificationChannels\WebPush\DeclarativeWebPushMessage;
 use NotificationChannels\WebPush\WebPushChannel;
 
