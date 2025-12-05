@@ -1,5 +1,5 @@
 {{-- resources/views/components/pwa/install-banner-manual.blade.php --}}
-<div x-cloak x-data="manualInstallBanner" x-show="show" class="bg-yellow-600 text-white px-4 py-3 flex items-center justify-between shadow-lg">
+<div x-cloak x-data="manualInstallBanner" x-show="show" {{ $attributes->merge(['class' => 'bg-yellow-600 text-white px-4 py-3 flex items-center justify-between shadow-lg']) }}>
     <span>
         <div class="mb-1"><strong>Install this app manually</strong> for a better experience!</div>
         <template x-if="isIos()">
