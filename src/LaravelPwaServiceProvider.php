@@ -16,7 +16,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
         Blade::directive('laravelPwaScripts', function () {
             return "<?php echo view('pwa::scripts')->render(); ?>";
         });
-        
+
         // Register @laravelPwaHead Blade directive
         Blade::directive('laravelPwaHead', function () {
             return "<?php echo view('pwa::head')->render(); ?>";
@@ -29,15 +29,15 @@ class LaravelPwaServiceProvider extends ServiceProvider
         ], 'laravel-pwa-config');
 
         // Register PWA asset routes
-        \Illuminate\Support\Facades\Route::get('/pwa/manifest.json', [
+        \Illuminate\Support\Facades\Route::get('/manifest.json', [
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'manifest'
         ])->name('pwa.manifest');
 
-        \Illuminate\Support\Facades\Route::get('/pwa/service-worker.js', [
+        \Illuminate\Support\Facades\Route::get('/service-worker.js', [
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'serviceWorker'
         ])->name('pwa.service-worker');
 
-        \Illuminate\Support\Facades\Route::get('/pwa/offline', [
+        \Illuminate\Support\Facades\Route::get('/offline', [
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'offline'
         ])->name('pwa.offline');
     }
