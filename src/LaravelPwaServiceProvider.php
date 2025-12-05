@@ -37,7 +37,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'serviceWorker'
         ])->name('pwa.service-worker');
 
-        \Illuminate\Support\Facades\Route::get('/offline', [
+        \Illuminate\Support\Facades\Route::get('/pwa/offline', [
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'offline'
         ])->name('pwa.offline');
     }
