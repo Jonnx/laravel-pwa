@@ -25,7 +25,7 @@ return [
         'short_name' => env('PWA_SHORT_NAME', env('APP_NAME', 'Laravel')),
 
         // Application start URL
-        'start_url' => '/dashboard',
+        'start_url' => env('APP_URL').'/dashboard',
 
         // DISPLAY MODE
         // options: fullscreen, standalone, minimal-ui, browser
