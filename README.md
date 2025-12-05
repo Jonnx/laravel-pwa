@@ -65,6 +65,7 @@ php artisan webpush:vapid
 This will generate the required keys and update your `.env` and `config/pwa.php` files. Make sure to configure your environment and PWA settings accordingly.
 
 #### User Model Push Subscription Trait
+This trait automatically establishes the relationship from the user model to many push subscriptions. This way a user can opt-in to push notifications on multiple devices and receive notifications everywhere. 
 
 ```
 use NotificationChannels\WebPush\HasPushSubscriptions;
