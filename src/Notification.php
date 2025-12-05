@@ -17,8 +17,6 @@ class Notification extends IlluminateNotification
 
     public function __construct(string|null $title = null, string|null $body = null, string|null $openUrl = null)
     {
-        parent::__construct();
-        
         $this->title = trim($title);
         $this->body = trim($body);
         $this->openUrl = trim($openUrl);
