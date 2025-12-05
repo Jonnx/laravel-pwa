@@ -40,8 +40,8 @@ return [
         // ICONS
         'icons' => [
             [
-                    'src' => 'https://placehold.co/512x512?text=PWA',
-                    'sizes' => '192x192',
+                'src' => 'https://placehold.co/512x512?text=PWA',
+                'sizes' => '192x192',
                 'type' => 'image/png',
             ],
             [
@@ -64,6 +64,11 @@ return [
 
         // Whether to prefer related applications over the web app
         'prefer_related_applications' => false,
-    ]
+    ],
+
+    'theme_colors' => [
+        'light' => '#ffffff',
+        'dark' => '#262626',
+    ],
 
 ];

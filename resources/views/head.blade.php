@@ -1,6 +1,6 @@
 {{-- resources/views/head.blade.php --}}
 <!-- PWA Head Section -->
 <link rel="manifest" href="{{ route('pwa.manifest') }}">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ config('pwa.theme_colors.light', config('pwa.manifest.theme_color')) }}">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ config('pwa.theme_colors.dark', config('pwa.manifest.theme_color')) }}">
 <!-- Add more meta tags or links as needed -->
