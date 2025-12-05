@@ -40,11 +40,7 @@ php artisan migrate
 
 ## Push Notification Permissions & Setup
 
-- Use the push notification subscription handler Livewire component:
 
-```blade
-@livewire('push-notification-subscription-handler')
-```
 
 ## PWA Install Banners
 
@@ -63,6 +59,7 @@ Include these components in your layout to provide a seamless install experience
 
 ## Push Notification Setup
 
+### Vapid Keys
 To enable push notifications, you need to generate VAPID API keys:
 
 ```bash
@@ -71,10 +68,22 @@ php artisan webpush:vapid
 
 This will generate the required keys and update your `.env` and `config/pwa.php` files. Make sure to configure your environment and PWA settings accordingly.
 
-## Notes
-- Make sure your app is served over HTTPS for push notifications to work.
-- If you use custom Blade components, register them in your app or extend the package as needed.
-- For advanced configuration, check the published `config/pwa.php` file.
+### Web Push Subscription Handler
+Use the push notification subscription handler Livewire component. This captures the subscription data and automatically saves it to the user on the back-end so that you can use the subscription to send notifications anytime. 
+```blade
+@livewire('push-notification-subscription-handler')
+```
+
+### User Permission Banner
+Push notifications require active user opt-in on all browsers. Include this components in your layout to provide a seamless opt-in experience.
+
+```blade
+<x-pwa.push-notification-banner />
+```
+
+## Customizing Banner Components
+The setup steps publish the banner components to a folder in your project so you can easily tweak appearance, position and more. 
+The files are located in the `resources/views/pwa` folder.
 
 ---
 
