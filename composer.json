@@ -26,6 +26,7 @@
         }
     },
     "require": {
-        "laravel-notification-channels/webpush": "^10.3"
+        "laravel-notification-channels/webpush": "^10.3",
+        "livewire/livewire": "^3.7"
     }
 }

@@ -12,6 +12,12 @@ class LaravelPwaServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Register Blade components namespace for package
+        $this->loadViewComponentsAs('pwa', [
+            \Jonnx\LaravelPwa\View\Components\YourComponent::class,
+            // Add more components here as needed
+        ]);
+        
         // Register @laravelPwaScripts Blade directive
         Blade::directive('laravelPwaScripts', function () {
             return "<?php echo view('pwa::scripts')->render(); ?>";

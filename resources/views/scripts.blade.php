@@ -1,5 +1,4 @@
-{{-- resources/views/scripts.blade.php --}}
-<!-- PWA Scripts Section -->
+<!-- SERVICE WORKER -->
 <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
@@ -7,3 +6,5 @@
         });
     }
 </script>
+
+@livewire('push-notification-subscription-handler')
