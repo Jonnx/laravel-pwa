@@ -14,7 +14,6 @@
                 }
             },
             init() {
-                this.log('Push Notification Subscription Handler Initialized');
                 this.checkSubscription(false);
             },
             updateSubscriptionOnServer(subscription) {
