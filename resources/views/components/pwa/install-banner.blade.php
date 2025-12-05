@@ -33,7 +33,7 @@
                 this.log('PWA Install Banner: Initializing');
 
                 window.addEventListener('pwa:show-install-banner', () => {
-                    this.log('PWA Install Banner: Custom event received');
+                    this.log('PWA Install Banner: beforeinstallprompt event received');
                     this.deferredPrompt = window.deferredPwaInstallPrompt;
                     this.show = true;
                 });
