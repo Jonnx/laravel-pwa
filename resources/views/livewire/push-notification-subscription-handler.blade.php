@@ -27,7 +27,7 @@
                     registration.pushManager.getSubscription().then(subscription => {
                         if (subscription) {
                             this.log('Push Notification Subscription: Already Subscribed', { subscription });
-                            // Handle existing subscription
+                            this.updateSubscriptionOnServer(subscription);
                         } else {
                             this.log('Push Notification Subscription: Not Subscribed');
                             if (userInitiated) {
@@ -37,7 +37,12 @@
                         }
                     });
                 });
-            }
+            },
+            updateSubscriptionOnServer(subscription) {
+                // Send subscription to server via Livewire
+                this.log('Push Notification Subscription: Sending Subscription to Server', { subscription });
+                @this.call('storeSubscription', subscription);
+            },
         }));
     });
 </script>
