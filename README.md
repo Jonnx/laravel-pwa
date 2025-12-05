@@ -67,10 +67,10 @@ yarn dev
 @laravelPwaScripts
 ```
 
-- Use the push notification banner component:
+- Use the push notification banner component (after publishing views):
 
 ```blade
-<x-pwa-push-notification-banner />
+<x-pwa.push-notification-banner />
 ```
 
 - Use the push notification subscription handler Livewire component:
