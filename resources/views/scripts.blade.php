@@ -10,4 +10,6 @@
 @if(config('pwa.features.push_notifications.enabled'))
     {{-- Include Livewire Push Notification Subscription Handler --}}
     @livewire('push-notification-subscription-handler')
+@else
+    <!-- Push Notifications feature is disabled in configuration -->
 @endif
