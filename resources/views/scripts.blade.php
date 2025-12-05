@@ -7,7 +7,7 @@
     }
 </script>
 
-@if(config('pwa.features.notifications.enabled'))
+@if(config('pwa.features.notifications'))
     {{-- Include Livewire Push Notification Subscription Handler --}}
     @livewire('push-notification-subscription-handler')
 @else
