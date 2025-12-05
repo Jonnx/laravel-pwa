@@ -13,19 +13,31 @@
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('pwaInstallBanner', () => ({
+            debug: {{ config('app.debug') ? 'true' : 'false' }},
             show: false,
             deferredPrompt: null,
+            log(message) {
+                if (this.debug) {
+                    console.log(message);
+                }
+            },
             init() {
+                this.log('PWA Install Banner: Initializing');
+
                 window.addEventListener('beforeinstallprompt', (e) => {
                     e.preventDefault();
+                    this.log('PWA Install Banner: Before install prompt');
                     this.deferredPrompt = e;
                     this.show = true;
                 });
+                
                 window.addEventListener('appinstalled', () => {
+                    this.log('PWA Install Banner: App installed');
                     this.show = false;
                 });
                 // Hide if already installed (standalone mode)
-                if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+                if (window.matchMedia('(display-mode: {{ config('pwa.manifest.display') }})').matches || window.navigator.{{ config('pwa.manifest.display') }} === true) {
+                    this.log('PWA Install Banner: Already installed (standalone mode)');
                     this.show = false;
                 }
             },
@@ -34,10 +46,18 @@
                     this.deferredPrompt.prompt();
                     this.deferredPrompt.userChoice.then((choiceResult) => {
                         if (choiceResult.outcome === 'accepted') {
+                            this.log('PWA Install Banner: User accepted install');
+                            this.show = false;
+                        }
+                        else {
+                            this.log('PWA Install Banner: User dismissed install');
                             this.show = false;
                         }
                         this.deferredPrompt = null;
                     });
+                }
+                else {
+                    this.log('PWA Install Banner: No deferred prompt');
                 }
             }
         }));
