@@ -11,6 +11,15 @@
     </button>
 </div>
 <script>
+    // Listen for beforeinstallprompt globally and notify Alpine
+    window.deferredPwaInstallPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        window.deferredPwaInstallPrompt = e;
+        window.dispatchEvent(new CustomEvent('pwa:show-install-banner'));
+    });
+</script>
+<script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('pwaInstallBanner', () => ({
             debug: {{ config('app.debug') ? 'true' : 'false' }},
@@ -24,13 +33,11 @@
             init() {
                 this.log('PWA Install Banner: Initializing');
 
-                window.addEventListener('beforeinstallprompt', (e) => {
-                    e.preventDefault();
-                    this.log('PWA Install Banner: Before install prompt');
-                    this.deferredPrompt = e;
+                window.addEventListener('pwa:show-install-banner', () => {
+                    this.log('PWA Install Banner: Custom event received');
+                    this.deferredPrompt = window.deferredPwaInstallPrompt;
                     this.show = true;
                 });
-                
                 window.addEventListener('appinstalled', () => {
                     this.log('PWA Install Banner: App installed');
                     this.show = false;
