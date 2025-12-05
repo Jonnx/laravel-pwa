@@ -1,5 +1,5 @@
 {{-- resources/views/components/push-notification-banner.blade.php --}}
-<div x-data="pwaPushNotificationBanner" x-show="show" class="bg-blue-600 text-white px-4 py-3 flex items-center justify-between z-50 shadow-lg">
+<div x-data="pushNotificationBanner" x-show="show" class="bg-blue-600 text-white px-4 py-3 flex items-center justify-between z-50 shadow-lg">
     <span>
         <strong>Enable notifications</strong> to stay updated!
     </span>
@@ -12,8 +12,22 @@
 </div>
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('pwaPushNotificationBanner', () => ({
+        Alpine.data('pushNotificationBanner', () => ({
             show: true,
+            init() {
+                if (!this.pushNotificationsPossible() || this.pushPermissionState() !== 'default') {
+                    this.show = false;
+                }
+            },
+            pushNotificationsPossible() {
+                return 'Notification' in window && 'serviceWorker' in navigator;
+            },
+            pushPermissionState() {
+                if ('Notification' in window && Notification.permission) {
+                    return Notification.permission; // 'granted', 'denied', or 'default'
+                }
+                return 'default';
+            },
             enableNotifications() {
                 this.show = false;
                 window.dispatchEvent(new CustomEvent('pwa:enable-push-notifications'));
