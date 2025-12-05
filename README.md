@@ -10,12 +10,23 @@ Turn your Laravel application into a Progressive Web App (PWA) with push notific
 composer require jonnx/laravel-pwa
 ```
 
-2. **Publish the config and components:**
+2. Add Push Subscription Trait to User Model
+
+```
+use NotificationChannels\WebPush\HasPushSubscriptions;
+...
+class User extends Authenticatable
+{
+    use HasPushSubscriptions
+```
+
+3. **Publish the config and components:**
 
 ```bash
 php artisan vendor:publish --force --tag=laravel-pwa-config
 php artisan vendor:publish --force --tag=laravel-pwa-components
 php artisan webpush:vapid
+php artisan migrate
 ```
 
 ## Usage
@@ -27,11 +38,7 @@ php artisan webpush:vapid
 @laravelPwaScripts
 ```
 
-- Use the push notification banner component (after publishing views):
-
-```blade
-<x-pwa.push-notification-banner />
-```
+## Push Notification Permissions & Setup
 
 - Use the push notification subscription handler Livewire component:
 
