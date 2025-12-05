@@ -91,6 +91,22 @@ Push notifications require active user opt-in on all browsers. Include this comp
 <x-pwa.push-notification-banner />
 ```
 
+#### Testing Push Notifications
+To simplify testing and debugging during setup, this package provides a component to test push notifications with. 
+Include this component in any of your pages and click the button. A test push notification should appear on each of your user's subscribed devices.
+
+Here is how it works: 
+- The component renders a simple button.
+- When clicked, it triggers the `sendTestNotification` method in its Livewire class.
+- The method sends a test push notification to all devices currently subscribed for the authenticated user.
+- This allows you to verify that push notification setup, browser permissions, and subscription storage are working correctly.
+
+```blade
+@livewire('push-notification-test-button')
+```
+
+
+
 ## Customizing Banner Components
 The setup steps publish the banner components to a folder in your project so you can easily tweak appearance, position and more. 
 The files are located in the `resources/views/pwa` folder.
