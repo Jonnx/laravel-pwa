@@ -1,5 +1,5 @@
 {{-- resources/views/livewire/push-notification-subscription-handler.blade.php --}}
-<span x-data="pushNotificationSubscriptionHandler"></span>
+<span x-data="pushNotificationSubscriptionHandler" x-on:pwa:enable-push-notifications.window="checkSubscription(true)"></span>
 <script>
     document.addEventListener('alpine:init', () => {
         Alpine.data('pushNotificationSubscriptionHandler', () => ({
