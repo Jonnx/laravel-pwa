@@ -33,7 +33,7 @@ class LaravelPwaServiceProvider extends ServiceProvider
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'manifest'
         ])->name('pwa.manifest');
 
-        \Illuminate\Support\Facades\Route::get('/service-worker.js', [
+        \Illuminate\Support\Facades\Route::get('/sw.js', [
             \Jonnx\LaravelPwa\Http\Controllers\PwaAssetController::class, 'serviceWorker'
         ])->name('pwa.service-worker');
 
