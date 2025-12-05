@@ -25,7 +25,7 @@ class PushNotificationSubscriptionHandler extends Component
             return;
         }
 
-        $this->user->updatePushSubscription(
+        $user->updatePushSubscription(
             endpoint: data_get($subscription, 'endpoint'),
             key: data_get($subscription, 'keys.p256dh'),
             token: data_get($subscription, 'keys.auth'),
