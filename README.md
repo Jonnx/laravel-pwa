@@ -29,6 +29,7 @@ class User extends Authenticatable
 php artisan vendor:publish --force --tag=laravel-pwa-config
 php artisan vendor:publish --force --tag=laravel-pwa-components
 php artisan webpush:vapid
+php artisan vendor:publish --provider="NotificationChannels\WebPush\WebPushServiceProvider" --tag="migrations"
 php artisan migrate
 ```
 
