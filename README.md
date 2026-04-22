@@ -122,6 +122,27 @@ $user->notify(new Notification(
 ##### Advanced
 The class we provide is just a simplified wrapper around `DeclarativeWebPushMessage`. To learn more about this, checkout the documentation here: https://github.com/laravel-notification-channels/webpush?tab=readme-ov-file#declarative-web-push-messages
 
+#### Reacting to push events in the page
+
+Whenever the service worker receives a push, it broadcasts a `pwa:push` message to every open client with the parsed payload. Subscribe from any page to refresh UI, show in-app toasts, etc:
+
+```js
+navigator.serviceWorker.addEventListener('message', (event) => {
+    if (event.data?.type === 'pwa:push') {
+        // event.data.payload is the parsed push payload
+        // e.g. refresh a Livewire component:
+        window.Livewire?.dispatch('refresh-timeline');
+    }
+});
+```
+
+Disable the broadcast via `config/pwa.php`:
+
+```php
+'features' => [
+    'notifications_broadcast' => false,
+],
+```
 
 ## Customizing Banner Components
 The setup steps publish the banner components to a folder in your project so you can easily tweak appearance, position and more. 

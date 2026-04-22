@@ -10,7 +10,18 @@ return [
         // ADD NOTIFICATIONS SUPPORT
         // enables push notifications and background push
         'notifications' => true,
-        
+
+        // BROADCAST PUSH EVENTS
+        // when true, the service worker also posts a message to every
+        // open client on each push event:
+        //   { type: 'pwa:push', payload: <parsed-push-payload> }
+        // listen in the browser with:
+        //   navigator.serviceWorker.addEventListener('message', (e) => {
+        //     if (e.data?.type === 'pwa:push') { /* refresh UI */ }
+        //   });
+        // set false to disable if you don't need the in-app signal.
+        'notifications_broadcast' => true,
+
         // SHOULD APP BE INSTALLABLE
         // allows users to install the PWA on their device
         'install' => true,

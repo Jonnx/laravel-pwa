@@ -16,6 +16,8 @@ class CompileServiceWorker
         }
 
         if($notificationsSupport) {
+            $broadcast = config('pwa.features.notifications_broadcast', true) ? 'true' : 'false';
+            $workerContents .= "const __LARAVEL_PWA_BROADCAST_PUSH__ = {$broadcast};\n\n";
             $workerContents .= file_get_contents(__DIR__.'/../../resources/js/service-worker/notifications.js');
             $workerContents .= "\n\n";
         }
